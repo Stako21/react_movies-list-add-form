@@ -7,19 +7,12 @@ type Props = {
 };
 
 export const NewMovie: React.FC<Props> = ({ onAdd }) => {
-  // Increase the count after successful form submission
-  // to reset touched status of all the `Field`s
-  const [count, setCount] = useState(0);
 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [imgUrl, setImgUrl] = useState('');
   const [imdbUrl, setImdbUrl] = useState('');
   const [imdbId, setImdbId] = useState('');
-
-  // const increment = () => {
-  //   setCount(prev => prev + 1);
-  // };
 
   const data = {
     title: title.trim(),
@@ -41,18 +34,10 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
     }
 
     onAdd(data);
-
-    setTitle('');
-    setDescription('');
-    setImdbId('');
-    setImdbUrl('');
-    setImgUrl('');
-
-    setCount(n => n + 1);
   };
 
   return (
-    <form className="NewMovie" onSubmit={handleSubmit} key={count}>
+    <form className="NewMovie" onSubmit={handleSubmit}>
       <h2 className="title">Add a movie</h2>
 
       <TextField
